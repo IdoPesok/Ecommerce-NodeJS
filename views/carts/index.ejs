@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+
+<h1 class="text-center" id="top-buffer">My Cart</h1>
+<hr>
+<hr>
+<% if (products.length == 0) { %>
+	<h4 class="text-center">Your Cart Is Empty<h4>
+<% } else { %>
+	<% products.forEach(function(product) { %>
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<img class="col-md-3" src="<%= product.image %>" style="max-height: 150px;">
+					<div class="col-md-9">
+						<h4><%= product.name %></h4>
+						<p><em>Quantity: <%= product.quantity %></em></p>
+						<h6>Total: $<%= product.price * product.quantity %></h6>
+						<a href="/products/<%= product.id %>" class="btn btn-info">View</a>
+						<form style="display: inline;" action="/cart/<%= product.cart_index %>/del" method="post">
+							<button type="submit" class="btn btn-danger">Delete</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% }) %>
+<% } %>
+<hr id="bottom-buffer">
+
+<% include ../partials/footer %>

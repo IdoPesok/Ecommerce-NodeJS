@@ -1,0 +1,76 @@
+#bottom-border {
+	border-bottom: 1px solid black;
+}
+
+#bottom-border-white {
+	border-bottom: 1px solid white;
+}
+
+#nav_item:hover {
+	color: white;
+}
+
+#jumbo {
+	margin-top: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#tip_form {
+	width: 40%;
+	margin: 25px auto;
+}
+
+#tip_form_button {
+	display: block;
+	margin: auto;
+}
+
+#vertical-buffer {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#bottom-buffer {
+	margin-bottom: 30px;
+}
+
+#top-buffer {
+	margin-top: 30px;
+}
+
+#form_title {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+#form_btn {
+	display: block;
+	width: 20%;
+	margin: 0 auto;
+}
+
+#auth_btn {
+	display: block;
+	margin: 0 auto;
+}
+
+#commentForm {
+	width: 50%;
+	margin: 30px auto;
+}
+
+#showCard {
+	width: 80%;
+	margin: 30px auto;
+}
+
+#deleteForm {
+	display: inline;
+}
+
+#add_menu_item_btn {
+	margin: 0 auto; 
+	display: block; 
+	width: 16%;
+}

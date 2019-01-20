@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+
+<div class="card" id="vertical-buffer">
+	<img src="<%= product.image %>" class="card-img-top">
+	<div class="card-header" style="border-bottom: 1px solid black">
+		<h5 class="card-title" style="margin: 0;"><%= product.name %></h5>
+	</div>
+	<div class="card-body">
+		<p><em><strong>$ <%= product.price %></strong></em></p>
+		<p><%= product.description %></p>
+		<p><em>Sold By: <%= product.storename %></em></p>
+		<% if (currentUser && currentUser.storename == product.storename) { %>
+			<a href="/products/<%= product.id %>/edit" class="btn btn-primary">Edit</a>
+			<form action="/products/<%= product.id %>?_method=DELETE" method="post" style="display: inline;">
+				<button type="submit" class="btn btn-danger">Delete</button>
+			</form>
+		<% } %>
+		<a href="/stores/<%= product.storename %>" class="btn btn-info" style="display: block; width: 12.2%; margin-top: 5px;">View Store</a>
+		<% if (currentUser) { %>
+			<a href="/cart/<%= product.id %>/add" class="btn btn-light" style="display: block; width: 12.2%; margin-top: 5px;">Add To Cart</a>
+			<a href="/products/<%= product.id %>/reviews/new" class="btn btn-success" style="display: block; width: 12.2%; margin-top: 5px;">Add Review</a>
+		<% } %>
+	</div>
+</div>
+<% if (product.reviews.length > 0) { %>
+	<div class="card" id="showCard">
+		<h4 class="card-header text-white bg-success">Reviews</h4>
+		<div class="card-body">
+			<% product.reviews.forEach(function(review) { %>
+				<div class="card" style="margin-top: 5px; margin-bottom: 5px;">
+					<div class="card-body">
+						<h5 class="card-title"><em><%= review.author.username %></em></h5>
+						<p class="card-text"><%= review.text %></p>
+						<% if (typeof currentUser !== 'undefined' && review.author.id.equals(currentUser._id)) { %>
+							<a class="btn btn-outline-info btn-sm" href="/products/<%= product._id %>/reviews/<%= review._id %>/edit">Edit</a>
+							<form id="deleteForm" action="/products/<%= product._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+								<button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+							</form>
+						<% } %>
+					</div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+<% } %>
+
+<% include ../partials/footer %>

@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+<div class="jumbotron">
+	<h1 class="text-center" id="top-buffer">Search Products</h1>
+	<form action="/search" method="post">
+		<div class="form-group">
+			<input type="text" id="search_input" name="search" class="form-control" placeholder="Enter Keywords: ">
+		</div>
+		<button class="btn btn-primary text-center" style="margin: 0 auto; display: block; width: 20%;">Search</button>
+	</form>
+</div>
+<% if (products.length == 0) { %>
+	<h3 class='text-center' style='margin-top: 30px;'>No Results Match Your Search</h3>
+<% } else { %>
+	<h3 class='text-center' style='margin-top: 40px;'><%= products.length %> Results Found</h3>
+	<div class='row' style='margin-top: 15px; margin-bottom: 30px;'>
+		<% products.forEach(function(product) { %>
+			<div class="col-md-4">
+				<div class="card text-white bg-dark" style="margin-bottom: 15px;">
+					<img class="card-img-top" src="<%= product.image %>" alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title"><%= product.name %></h4>
+						<p class="card-text"><%= product.description.substring(0, 150) %>...</p>
+						<p>$ <%= product.price %></p>
+						<p><em>Sold By: <%= product.storename %></em></p>
+						<a href="/products/<%= product.id %>" class="btn btn-primary">View</a>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+	</div>	
+<% } %>
+
+
+<% include ../partials/footer %>
