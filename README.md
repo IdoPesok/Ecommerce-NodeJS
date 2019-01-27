@@ -1,6 +1,12 @@
 # Ecommerce W/ Node
 A basic ecommerce website developed with Node JS.
 
+# Getting Started
+Clone the repo and install all dependencies using...
+```
+npm install
+```
+
 # Features
 - Passport Authentication System
 - Shopping "Cart"
